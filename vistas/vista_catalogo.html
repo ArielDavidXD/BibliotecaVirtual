@@ -1,0 +1,96 @@
+<!-- Vista 1: Catálogo -->
+<!-- Fragmento de HTML para integrar dentro de <main class="contenido-principal"> en index.html. -->
+<!-- No es una página completa: comparte navegación, CSS y JavaScript con las otras vistas. -->
+
+<section id="vista-catalogo"
+                 class="vista"
+                 aria-labelledby="catalogo_titulo">
+
+            <h2 id="catalogo_titulo">Nuestro catálogo de libros</h2>
+
+            <!-- BUSCADOR -->
+            <div class="campo-formulario">
+                <label for="busqueda">Buscar por título o autor</label>
+
+                <input type="search"
+                       id="busqueda"
+                       placeholder="Escribe un título o autor"
+                       autocomplete="off">
+            </div>
+
+
+            <!-- FILTROS POR ESTADO -->
+            <div class="catalogo_filtros"
+                 role="group"
+                 aria-label="Filtrar por estado">
+
+                <button type="button"
+                        class="boton_activo"
+                        data-estado="todos"
+                        aria-pressed="true">
+                    Todos
+                </button>
+
+                <button type="button"
+                        class="boton"
+                        data-estado="disponibles"
+                        aria-pressed="false">
+                    Disponibles
+                </button>
+
+                <button type="button"
+                        class="boton"
+                        data-estado="prestados"
+                        aria-pressed="false">
+                    Prestados
+                </button>
+
+            </div>
+
+
+            <!-- GÉNERO Y ORDENAMIENTO -->
+            <div class="controles-catalogo">
+
+                <div class="campo-formulario">
+                    <label for="filtro-genero">Género</label>
+
+                    <select id="filtro-genero">
+                        <option value="todos">Todos los géneros</option>
+                    </select>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="orden-campo">Ordenar por</label>
+
+                    <select id="orden-campo">
+                        <option value="titulo">Título</option>
+                        <option value="autor">Autor</option>
+                        <option value="anio">Año</option>
+                    </select>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="orden-direccion">Dirección</label>
+
+                    <select id="orden-direccion">
+                        <option value="asc">Ascendente</option>
+                        <option value="desc">Descendente</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <!-- MENSAJES Y TARJETAS -->
+            <p id="mensaje-catalogo"
+               role="status"
+               aria-live="polite"></p>
+
+            <p id="contador-libros" aria-live="polite"></p>
+
+            <div id="contenedor-libros"
+                 class="catalogo-tarjetas"
+                 aria-label="Libros del catálogo">
+            </div>
+
+        </section>

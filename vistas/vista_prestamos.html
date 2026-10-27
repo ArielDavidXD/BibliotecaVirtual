@@ -1,0 +1,44 @@
+<!-- Vista 2: Mis préstamos -->
+<!-- Fragmento de HTML para integrar dentro de <main class="contenido-principal"> en index.html. -->
+<!-- No es una página completa: comparte navegación, CSS y JavaScript con las otras vistas. -->
+
+<section id="vista-prestamos"
+                 class="vista"
+                 aria-labelledby="titulo-prestamos"
+                 hidden>
+
+            <h2 id="titulo-prestamos">Mis préstamos</h2>
+
+            <p id="mensaje-prestamos"
+               role="status"
+               aria-live="polite"></p>
+
+
+            <!-- PRÉSTAMOS ACTIVOS -->
+            <section aria-labelledby="titulo-activos">
+
+                <h3 id="titulo-activos">Préstamos activos</h3>
+
+                <p id="sin-prestamos-activos">
+                    No hay préstamos activos.
+                </p>
+
+                <div id="lista-prestamos-activos"></div>
+
+            </section>
+
+
+            <!-- HISTORIAL -->
+            <section aria-labelledby="titulo-historial">
+
+                <h3 id="titulo-historial">Historial de préstamos</h3>
+
+                <p id="sin-prestamos-devueltos">
+                    Todavía no hay préstamos devueltos.
+                </p>
+
+                <div id="lista-historial-prestamos"></div>
+
+            </section>
+
+        </section>

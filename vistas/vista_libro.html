@@ -1,0 +1,153 @@
+<!-- Vista 3: Agregar y editar libro -->
+<!-- Fragmento de HTML para integrar dentro de <main class="contenido-principal"> en index.html. -->
+<!-- No es una página completa: comparte navegación, CSS y JavaScript con las otras vistas. -->
+
+<section id="vista-libro"
+                 class="vista"
+                 aria-labelledby="titulo-formulario-libro"
+                 hidden>
+
+            <h2 id="titulo-formulario-libro">Agregar libro</h2>
+
+            <p>
+                Introduce los datos del libro que deseas
+                incorporar a la biblioteca.
+            </p>
+
+            <form id="form-libro" novalidate>
+
+                <!-- Identifica el libro cuando estemos editando. -->
+                <input type="hidden" id="id-libro-edicion">
+
+
+                <!-- TÍTULO -->
+                <div class="campo-formulario">
+
+                    <label for="titulo-libro">Título</label>
+
+                    <input type="text"
+                           id="titulo-libro"
+                           name="titulo"
+                           minlength="3"
+                           maxlength="60"
+                           required>
+
+                    <small id="error-titulo" class="error-campo"></small>
+
+                </div>
+
+
+                <!-- AUTOR -->
+                <div class="campo-formulario">
+
+                    <label for="autor-libro">Autor</label>
+
+                    <input type="text"
+                           id="autor-libro"
+                           name="autor"
+                           required>
+
+                    <small id="error-autor" class="error-campo"></small>
+
+                </div>
+
+
+                <!-- AÑO -->
+                <div class="campo-formulario">
+
+                    <label for="anio-libro">Año de publicación</label>
+
+                    <input type="number"
+                           id="anio-libro"
+                           name="anio"
+                           min="1000"
+                           max="2026"
+                           required>
+
+                    <small id="error-anio" class="error-campo"></small>
+
+                </div>
+
+
+                <!-- GÉNERO -->
+                <div class="campo-formulario">
+
+                    <label for="genero-libro">Género</label>
+
+                    <select id="genero-libro"
+                            name="genero"
+                            required>
+
+                        <option value="">Selecciona un género</option>
+                        <option value="Novela">Novela</option>
+                        <option value="Ciencia">Ciencia</option>
+                        <option value="Historia">Historia</option>
+                        <option value="Clásico">Clásico</option>
+                        <option value="Poesía">Poesía</option>
+                        <option value="Fantasía">Fantasía</option>
+                        <option value="Biografía">Biografía</option>
+                        <option value="Tecnología">Tecnología</option>
+                        <option value="Otro">Otro</option>
+
+                    </select>
+
+                    <small id="error-genero" class="error-campo"></small>
+
+                </div>
+
+
+                <!-- COMENTARIO -->
+                <div class="campo-formulario">
+
+                    <label for="comentario-libro">Comentario</label>
+
+                    <textarea id="comentario-libro"
+                              name="comentario"
+                              maxlength="120"
+                              rows="4"></textarea>
+
+                    <p id="contador-comentario" aria-live="polite">
+                        120 caracteres restantes
+                    </p>
+
+                    <small id="error-comentario" class="error-campo"></small>
+
+                </div>
+
+
+                <!-- EJEMPLAR DE COLECCIÓN -->
+                <div class="campo-formulario campo-checkbox">
+
+                    <input type="checkbox"
+                           id="libro-coleccion"
+                           name="coleccion">
+
+                    <label for="libro-coleccion">
+                        Ejemplar de colección
+                    </label>
+
+                </div>
+
+
+                <!-- BOTONES -->
+                <div class="acciones-formulario">
+
+                    <button type="submit" id="guardar-libro">
+                        Guardar libro
+                    </button>
+
+                    <button type="button"
+                            id="cancelar-edicion"
+                            hidden>
+                        Cancelar
+                    </button>
+
+                </div>
+
+                <p id="mensaje-formulario"
+                   role="status"
+                   aria-live="polite"></p>
+
+            </form>
+
+        </section>

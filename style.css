@@ -1,0 +1,644 @@
+
+/* ==========================================
+   1. VARIABLES DE COLORES
+========================================== */
+
+:root {
+    color-scheme: light;
+
+    --fondo: #f4f6fa;
+    --superficie: #ffffff;
+
+    --texto: #202938;
+    --texto-secundario: #536071;
+
+    --borde: #d7dde6;
+
+    --primario: #254f91;
+    --primario-hover: #1b3c70;
+    --texto-boton: #ffffff;
+
+    --disponible: #187747;
+    --prestado: #a65b12;
+    --coleccion: #7042a3;
+
+    --fondo-vencido: #fee2e2;
+    --texto-vencido: #991b1b;
+
+    --error: #b42318;
+    --exito: #166534;
+
+    --sombra: 0 4px 14px rgb(20 35 60 / 8%);
+}
+
+
+/* ==========================================
+   2. TEMA OSCURO
+   JavaScript añadirá la clase tema-oscuro
+   al elemento body cuando pulsemos el botón.
+========================================== */
+
+body.tema-oscuro {
+    color-scheme: dark;
+
+    --fondo: #151922;
+    --superficie: #222936;
+
+    --texto: #f3f5f9;
+    --texto-secundario: #c4ccda;
+
+    --borde: #414b5b;
+
+    --primario: #a7c5ff;
+    --primario-hover: #c3d7ff;
+    --texto-boton: #15223b;
+
+    --disponible: #7cdda5;
+    --prestado: #ffca82;
+    --coleccion: #d1b2ff;
+
+    --fondo-vencido: #512727;
+    --texto-vencido: #ffd0d0;
+
+    --error: #ff9b91;
+    --exito: #7cdda5;
+
+    --sombra: 0 4px 14px rgb(0 0 0 / 20%);
+}
+
+
+/* ==========================================
+   3. CONFIGURACIÓN GENERAL
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--fondo);
+    color: var(--texto);
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1.25;
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
+}
+
+a {
+    color: var(--primario);
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+/* Respeta los elementos ocultos mediante HTML. */
+[hidden] {
+    display: none !important;
+}
+
+/* Indica visualmente dónde está el foco del teclado. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--primario);
+    outline-offset: 3px;
+}
+
+
+/* ==========================================
+   4. ENCABEZADO Y NAVEGACIÓN
+========================================== */
+
+.encabezado {
+    padding: 1.5rem 5%;
+    background-color: var(--superficie);
+    border-bottom: 1px solid var(--borde);
+}
+
+.encabezado h1 {
+    margin-bottom: 1rem;
+}
+
+.navegacion ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.navegacion_enlace {
+    display: inline-block;
+
+    padding: 0.65rem 0.9rem;
+    border-radius: 7px;
+
+    color: var(--texto);
+    text-decoration: none;
+
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+}
+
+.navegacion_enlace:hover {
+    background-color: var(--fondo);
+}
+
+.navegacion_enlace[aria-current="page"] {
+    background-color: var(--primario);
+    color: var(--texto-boton);
+}
+
+
+/* ==========================================
+   5. CONTENIDO Y VISTAS
+========================================== */
+
+.contenido-principal {
+    width: min(1100px, 92%);
+    margin: 2rem auto;
+}
+
+.vista {
+    animation: aparecer 0.25s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==========================================
+   6. FORMULARIOS Y CAMPOS
+========================================== */
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    margin-bottom: 1rem;
+}
+
+.campo-formulario label {
+    font-weight: 600;
+}
+
+.campo-formulario input:not([type="checkbox"]),
+.campo-formulario select,
+.campo-formulario textarea,
+#busqueda {
+    width: 100%;
+    min-width: 0;
+
+    padding: 0.7rem 0.8rem;
+
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+
+    background-color: var(--superficie);
+    color: var(--texto);
+}
+
+.campo-formulario textarea {
+    resize: vertical;
+}
+
+.campo-checkbox {
+    flex-direction: row;
+    align-items: center;
+}
+
+.campo-checkbox input {
+    width: auto;
+}
+
+
+/* ==========================================
+   7. FILTROS Y ORDENAMIENTO DEL CATÁLOGO
+========================================== */
+
+.catalogo_filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    margin: 1rem 0;
+}
+
+.controles-catalogo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+#contador-libros {
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+}
+
+#mensaje-catalogo,
+#mensaje-prestamos,
+#mensaje-formulario,
+#mensaje-ajustes {
+    color: var(--texto-secundario);
+}
+
+
+/* ==========================================
+   8. BOTONES
+========================================== */
+
+button {
+    padding: 0.6rem 0.9rem;
+
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+
+    background-color: var(--superficie);
+    color: var(--texto);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        transform 0.2s;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    border-color: var(--primario);
+}
+
+.boton_activo {
+    background-color: var(--primario);
+    color: var(--texto-boton);
+    border-color: var(--primario);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+button[type="submit"] {
+    background-color: var(--primario);
+    color: var(--texto-boton);
+    border-color: var(--primario);
+}
+
+button[type="submit"]:hover:not(:disabled) {
+    background-color: var(--primario-hover);
+}
+
+
+/* ==========================================
+   9. TARJETAS DEL CATÁLOGO
+========================================== */
+
+.catalogo-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+
+    margin-top: 1.5rem;
+}
+
+.tarjeta-libro,
+.tarjeta-prestamo {
+    min-width: 0;
+    padding: 1.2rem;
+
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+
+    background-color: var(--superficie);
+
+    box-shadow: var(--sombra);
+
+    overflow-wrap: anywhere;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        background-color 0.2s;
+}
+
+.tarjeta-libro:hover,
+.tarjeta-prestamo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgb(20 35 60 / 12%);
+}
+
+.tarjeta-libro h3,
+.tarjeta-prestamo h3,
+.tarjeta-prestamo h4 {
+    margin-bottom: 0.8rem;
+}
+
+.tarjeta-libro p,
+.tarjeta-prestamo p {
+    margin: 0 0 0.6rem;
+}
+
+.acciones-libro,
+.acciones-formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    margin-top: 1rem;
+}
+
+
+/* ==========================================
+   10. ESTADOS DE LOS LIBROS
+========================================== */
+
+.libro-disponible {
+    border-left: 5px solid var(--disponible);
+}
+
+.libro-prestado {
+    border-left: 5px solid var(--prestado);
+}
+
+.libro-coleccion {
+    border-left: 5px solid var(--coleccion);
+}
+
+.estado-libro {
+    font-weight: 700;
+}
+
+.etiqueta-vencido {
+    display: inline-block;
+
+    padding: 0.25rem 0.6rem;
+    border-radius: 5px;
+
+    background-color: var(--fondo-vencido);
+    color: var(--texto-vencido);
+
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+
+/* ==========================================
+   11. VISTA DE PRÉSTAMOS
+========================================== */
+
+#lista-prestamos-activos,
+#lista-historial-prestamos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+}
+
+.prestamo-devuelto {
+    border-left: 5px solid var(--disponible);
+}
+
+.estado-retraso {
+    color: var(--error);
+    font-weight: 700;
+}
+
+.estado-a-tiempo {
+    color: var(--exito);
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   12. FORMULARIOS Y MENSAJES
+========================================== */
+
+form {
+    max-width: 650px;
+}
+
+.error-campo {
+    display: block;
+    min-height: 0.5rem;
+
+    color: var(--error);
+    font-size: 0.9rem;
+}
+
+.mensaje-error {
+    color: var(--error);
+    font-weight: 600;
+}
+
+.mensaje-exito {
+    color: var(--exito);
+    font-weight: 600;
+}
+
+.resumen-estadisticas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+
+    padding: 0;
+}
+
+.resumen-estadisticas div {
+    padding: 1rem;
+
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+
+    background-color: var(--superficie);
+}
+
+.resumen-estadisticas dt {
+    color: var(--texto-secundario);
+}
+
+.resumen-estadisticas dd {
+    margin: 0.5rem 0 0;
+
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+#contador-comentario {
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+}
+
+
+/* ==========================================
+   13. MODALES
+========================================== */
+
+dialog {
+    width: min(500px, 92%);
+    max-height: 85vh;
+    overflow-y: auto;
+
+    padding: 1.5rem;
+
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+
+    background-color: var(--superficie);
+    color: var(--texto);
+}
+
+dialog::backdrop {
+    background-color: rgb(0 0 0 / 55%);
+}
+
+dialog form {
+    width: 100%;
+}
+
+
+/* ==========================================
+   14. ADAPTACIÓN A MÓVILES
+========================================== */
+
+@media (max-width: 700px) {
+
+    .encabezado {
+        padding: 1rem;
+    }
+
+    .contenido-principal {
+        width: 94%;
+        margin: 1.2rem auto;
+    }
+
+    .controles-catalogo {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .catalogo-tarjetas,
+    #lista-prestamos-activos,
+    #lista-historial-prestamos {
+        grid-template-columns: 1fr;
+    }
+
+    .resumen-estadisticas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* Respetar la preferencia de movimiento reducido. */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* Ajustes visuales añadidos para mensajes, saludos y etiquetas de colección. */
+.saludo-usuario {
+    margin: -0.4rem 0 1rem;
+    color: var(--texto-secundario);
+    font-weight: 600;
+}
+
+.mensaje-global {
+    padding: 0.85rem 1rem;
+    margin: 0 0 1.2rem;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: var(--superficie);
+}
+
+.mensaje-global.mensaje-error,
+.mensaje-error {
+    color: var(--error);
+}
+
+.mensaje-exito {
+    color: var(--exito);
+}
+
+.etiqueta-coleccion {
+    display: inline-block;
+    margin: 0.25rem 0 0.75rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 5px;
+    color: var(--texto);
+    background: var(--fondo);
+    border: 1px solid var(--borde);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.prestamo-vencido {
+    border-left: 5px solid var(--error);
+}
+
+[aria-invalid="true"] {
+    border-color: var(--error) !important;
+}
+
+.acciones-formulario button {
+    min-height: 42px;
+}
+
+dialog .acciones-formulario {
+    margin-top: 1.25rem;
+}
+
+#cancelar-prestamo,
+#cancelar-eliminar,
+#cancelar-restablecer,
+#cancelar-edicion {
+    background: var(--superficie);
+    color: var(--texto);
+}

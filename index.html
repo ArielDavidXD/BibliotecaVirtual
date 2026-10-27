@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Biblioteca virtual para gestionar el catálogo, los préstamos y el historial de libros.">
+    <meta name="theme-color" content="#254f91">
+    <title>Biblioteca Virtual</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="js/modelos.js" defer></script>
+    <script src="js/datos.js" defer></script>
+    <script src="js/biblioteca.js" defer></script>
+    <script src="js/vistas/catalogo.js" defer></script>
+    <script src="js/vistas/prestamos.js" defer></script>
+    <script src="js/acciones.js" defer></script>
+    <script src="js/vistas/ajustes.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header class="encabezado">
+        <h1 id="titulo">Biblioteca Virtual</h1>
+        <p id="saludo-usuario" class="saludo-usuario" hidden></p>
+        <nav class="navegacion" aria-label="Navegación principal">
+            <ul>
+                <li><a href="#vista-catalogo" class="navegacion_enlace" data-vista="vista-catalogo" aria-current="page">Catálogo</a></li>
+                <li><a href="#vista-prestamos" class="navegacion_enlace" data-vista="vista-prestamos">Mis préstamos (<span id="contador-prestamos">0</span>)</a></li>
+                <li><a href="#vista-libro" class="navegacion_enlace" data-vista="vista-libro">Agregar libro</a></li>
+                <li><a href="#vista-ajustes" class="navegacion_enlace" data-vista="vista-ajustes">Resumen y ajustes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenido-principal">
+        <p id="mensaje-global" class="mensaje-global" role="status" aria-live="polite" hidden></p>
+        <div id="contenedor-vistas" aria-live="off">
+            <p>Cargando biblioteca…</p>
+        </div>
+        <noscript>Esta aplicación necesita JavaScript para funcionar.</noscript>
+    </main>
+
+    <!-- Modal propio para prestar un libro. -->
+    <dialog id="modal-prestamo" aria-labelledby="titulo-modal-prestamo">
+        <h2 id="titulo-modal-prestamo">Registrar préstamo</h2>
+        <p id="libro-modal-prestamo"></p>
+        <form id="form-prestamo" novalidate>
+            <div class="campo-formulario">
+                <label for="persona-prestamo">Nombre de la persona</label>
+                <input type="text" id="persona-prestamo" name="persona" minlength="2" maxlength="40" autocomplete="name" required>
+                <small id="error-persona-prestamo" class="error-campo" aria-live="polite"></small>
+            </div>
+            <div class="acciones-formulario">
+                <button type="submit">Confirmar préstamo</button>
+                <button type="button" id="cancelar-prestamo">Cancelar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Modal propio para confirmar eliminación. -->
+    <dialog id="modal-eliminar" aria-labelledby="titulo-modal-eliminar">
+        <h2 id="titulo-modal-eliminar">Eliminar libro</h2>
+        <p id="texto-confirmar-eliminar"></p>
+        <form id="form-confirmar-eliminar" novalidate>
+            <div class="acciones-formulario">
+                <button type="submit">Eliminar</button>
+                <button type="button" id="cancelar-eliminar">Cancelar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Modal propio de confirmación para restablecer los datos. -->
+    <dialog id="modal-restablecer" aria-labelledby="titulo-modal-restablecer">
+        <h2 id="titulo-modal-restablecer">Restablecer biblioteca</h2>
+        <p>Se reemplazarán los libros, préstamos y preferencias guardados por los datos iniciales. Esta acción no se puede deshacer.</p>
+        <div class="acciones-formulario">
+            <button type="button" id="confirmar-restablecer">Restablecer</button>
+            <button type="button" id="cancelar-restablecer">Cancelar</button>
+        </div>
+    </dialog>
+</body>
+</html>

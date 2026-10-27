@@ -1,0 +1,110 @@
+<!-- Vista 4: Resumen y ajustes -->
+<!-- Fragmento de HTML para integrar dentro de <main class="contenido-principal"> en index.html. -->
+<!-- No es una página completa: comparte navegación, CSS y JavaScript con las otras vistas. -->
+
+<section id="vista-ajustes"
+                 class="vista"
+                 aria-labelledby="titulo-ajustes"
+                 hidden>
+
+            <h2 id="titulo-ajustes">Resumen y ajustes</h2>
+
+
+            <!-- RESUMEN -->
+            <section aria-labelledby="titulo-resumen">
+
+                <h3 id="titulo-resumen">Resumen de la biblioteca</h3>
+
+                <dl class="resumen-estadisticas">
+
+                    <div>
+                        <dt>Total de libros</dt>
+                        <dd id="total-libros">0</dd>
+                    </div>
+
+                    <div>
+                        <dt>Libros disponibles</dt>
+                        <dd id="libros-disponibles">0</dd>
+                    </div>
+
+                    <div>
+                        <dt>Libros prestados</dt>
+                        <dd id="libros-prestados">0</dd>
+                    </div>
+
+                    <div>
+                        <dt>Libros vencidos</dt>
+                        <dd id="libros-vencidos">0</dd>
+                    </div>
+
+                </dl>
+
+                <h3>Libros por género</h3>
+
+                <div id="resumen-generos"></div>
+
+            </section>
+
+
+            <!-- NOMBRE DEL USUARIO -->
+            <section aria-labelledby="titulo-configuracion">
+
+                <h3 id="titulo-configuracion">Configuración</h3>
+
+                <form id="form-ajustes" novalidate>
+
+                    <div class="campo-formulario">
+
+                        <label for="nombre-usuario">Tu nombre</label>
+
+                        <input type="text"
+                               id="nombre-usuario"
+                               name="nombreUsuario"
+                               maxlength="40">
+
+                    </div>
+
+                    <button type="submit" id="guardar-ajustes">
+                        Guardar nombre
+                    </button>
+
+                </form>
+
+
+                <!-- TEMA -->
+                <div class="campo-formulario">
+
+                    <h4>Apariencia</h4>
+
+                    <button type="button"
+                            id="boton-tema"
+                            aria-pressed="false">
+                        Activar tema oscuro
+                    </button>
+
+                </div>
+
+
+                <!-- RESTABLECER DATOS -->
+                <div class="campo-formulario">
+
+                    <h4>Restablecer biblioteca</h4>
+
+                    <p>
+                        La biblioteca recuperará sus libros y
+                        préstamos iniciales.
+                    </p>
+
+                    <button type="button" id="restablecer-biblioteca">
+                        Restablecer biblioteca
+                    </button>
+
+                </div>
+
+                <p id="mensaje-ajustes"
+                   role="status"
+                   aria-live="polite"></p>
+
+            </section>
+
+        </section>
